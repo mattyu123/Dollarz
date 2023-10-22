@@ -1,0 +1,9 @@
+site_name: Finance App Documentation
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - javascript
+    - python
+    - yaml
+    - json
