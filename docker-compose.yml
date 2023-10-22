@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mongodb:
-    image: mongo:latest
+    image: mongo:7.0.2
     container_name: mongodb
     ports:
       - "27017:27017"
@@ -10,7 +10,7 @@ services:
       - mongodb_data:/data/db
 
   redis:
-    image: redis:latest
+    image: redis:7.2.2-bookworm
     container_name: redis
     ports:
       - "6379:6379"
