@@ -25,7 +25,7 @@ docker-compose down
 Details:
 
 - Redis, Mongodb, rethink are the default stable versions
-- FastAPI + Celery are on Debian 12 , with python 11 based toolchain
+- FastAPI + Celery are on Debian 12 , with python 3.11 based toolchain
 
 **Frontend**
 
