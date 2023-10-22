@@ -1,18 +1,19 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-import rethinkdb as r
+from rethinkdb import RethinkDB
 from pymongo import MongoClient
 from celery import Celery
 
 app = FastAPI()
+r = RethinkDB()
 
 # MongoDB client
 client = MongoClient("mongodb://mongodb:27017/")
 db = client.mydatabase
 
 # RethinkDB connection
-# r.connect("rethinkdb", 28015).repl()
+rethink_connection = r.connect("rethinkdb", 28015)
 
 # Celery configuration
 celery = Celery(
