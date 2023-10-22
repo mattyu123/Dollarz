@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  rethinkdb:
+    image: rethinkdb:latest
+    container_name: rethinkdb
+    ports:
+      - "28015:28015"
+    volumes:
+      - rethinkdb_data:/data
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+      - redis
+      - rethinkdb
+
+  celery:
+    build: ./backend
+    container_name: celery
+    command: celery -A app.main.celery worker --loglevel=info
+    depends_on:
+      - redis
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mongodb_data:
+  redis_data:
+  rethinkdb_data:
+
