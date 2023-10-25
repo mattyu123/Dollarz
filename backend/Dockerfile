@@ -10,9 +10,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # now copy the project over
 COPY . /app/
 
-#Celery Requires its own user (otherwise it'll be superuser)
-RUN useradd -m celeryuser
-USER celeryuser
 
 # Make port 80 open outside the container
 EXPOSE 80
@@ -21,4 +18,4 @@ EXPOSE 80
 ENV NAME World
 
 # Run /app/main.py when the container launches
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
