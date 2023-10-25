@@ -8,22 +8,8 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
-
-  redis:
-    image: redis:7.2.2-bookworm
-    container_name: redis
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-
-  rethinkdb:
-    image: rethinkdb:latest
-    container_name: rethinkdb
-    ports:
-      - "28015:28015"
-    volumes:
-      - rethinkdb_data:/data
+    networks:
+      - backend_network
 
   backend:
     build: ./backend
@@ -32,15 +18,12 @@ services:
       - "8000:8000"
     depends_on:
       - mongodb
-      - redis
-      - rethinkdb
-
-  celery:
-    build: ./backend
-    container_name: celery
-    command: celery -A app.main.celery worker --loglevel=info
-    depends_on:
-      - redis
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USERNAME}
+        MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+    networks:
+      - backend_network
+      - frontend_network
 
   frontend:
     build: ./frontend
@@ -49,9 +32,14 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+    networks:
+      - frontend_network
 
 volumes:
   mongodb_data:
-  redis_data:
-  rethinkdb_data:
 
+networks:
+  backend_network:
+    driver: bridge
+  frontend_network:
+    driver: bridge
