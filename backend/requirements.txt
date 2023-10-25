@@ -2,7 +2,7 @@ fastapi==0.104.0
 uvicorn==0.23.2
 pydantic==2.4.2
 motor==3.3.1
-strawberry-graphql==0.211.0
+strawberry-graphql[fastapi]==0.211.0
 numpy==1.26.1
 pandas==2.1.1
 scipy==1.11.3
