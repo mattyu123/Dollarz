@@ -12,7 +12,7 @@ COPY . /app/
 
 
 # Make port 80 open outside the container
-EXPOSE 80
+EXPOSE 8000
 
 # Define environment variable
 ENV NAME World
