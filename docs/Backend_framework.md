@@ -1,3 +1,15 @@
+# Backend API overview
+
+Backend itself runs on port 8000
+to which the Frontend makes requests to.
+
+The backend communicates directly with mongodb
+in the containerized virtual network.
+
+TODO:
+- GraphQL api for charts
+- OAuth between the frontend and backend
+
 ## Libraries of the Backend:
 
 **API etc**

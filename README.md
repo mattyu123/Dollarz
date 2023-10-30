@@ -18,10 +18,8 @@ docker-compose down
 
 **Backend**
 
-- Redis server (required for celery)
-- Mongodb server (test for select a db)
-- rethink server (test for select a db)
-- FastApi + Celery (provides the API to the frontend)
+- Mongodb server
+- FastApi
 
 Details:
 

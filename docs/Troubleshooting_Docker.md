@@ -10,8 +10,14 @@ sudo usermod -aG docker $USER
 
 newgrp docker
 
-
+### Docker containers
 if you would like the see the containers that
 are running:
 
-docker-compose logs <service>
+docker ps
+
+### To find logs
+
+docker ps #to find the container id
+
+docker-compose logs <container id>
