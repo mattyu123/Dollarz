@@ -5,7 +5,7 @@ This project contains boilerplate and the dependencies to run the finance app (c
 ## Quick setup
 
 - install docker + docker-compose for your OS (https://docs.docker.com/engine/install/)
-- create .env file (like in the .env.example file)
+- create .env file (like in the .env.example file) - make sure credentials match that of the mongo_init.js
 - in the terminal run:
 
 docker-compose up

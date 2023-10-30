@@ -1,33 +1,69 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from pymongo import MongoClient
-import os
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from bson import ObjectId
 
+#Get the methods from the database file
+from app.database import (
+  fetch_all_expenses,
+  insert_expense,
+  fetch_all_categories,
+  insert_category,
+  delete_category
+)
 
+#Import the different models that we have
+from app.models import (
+  Expense,
+  Category
+)
+
+#Defining the app variable here
 app = FastAPI()
 
-# MongoDB client
-MONGODB_USERNAME = os.environ.get("MONGODB_USERNAME")
-MONGODB_PASSWORD = os.environ.get("MONGODB_PASSWORD")
+#Adding the middleware here so client can connect to server, this is old code
+app.add_middleware(
+  CORSMiddleware,
+  allow_origins = ["*"],
+  allow_credentials = True,
+  allow_methods = ["*"],
+  allow_headers=["*"]
+)
 
-client = MongoClient(f"mongodb://{MONGODB_USERNAME}:{MONGODB_PASSWORD}@mongodb:27017/")
-db = client.mydatabase
+# Expense route where expenses are pulled from the database
+@app.get("/expenses")
+async def get_home_page():
+  response = await fetch_all_expenses()
+  return response
 
+# Post route for users to be able to add expenses
+@app.post("/expenses")
+async def insert_expense_item(expense_data: Expense):
+  expense_dict = expense_data.model_dump()
+  response = await insert_expense(expense_dict)
+  return response
 
-@app.on_event("startup")
-async def startup_event():
-    # when server starts
-    ...
+# Categories route where categories are pulled from database
+@app.get("/categories")
+async def get_categories():
+  response = await fetch_all_categories()
+  return response
 
-# EXAMPLE
-@app.get("/")
-async def read_root():
-    exampledoc = db.mydatabase.mytable.find_one()
+# Categories route where categories are pulled from 
+@app.post("/categories")
+async def insert_category_item(category_data: Category):
+  category_dict = category_data.model_dump()
+  response = await insert_category(category_dict)
+  return response
 
-    # FastAPI has background tasks
-
-    # demo
-    return {"Hello": "World", "data": exampledoc, "task_id": task.id}
-
-
+# Delete route where user can click on a category button and delete it
+@app.delete("/categories/{category_id}")
+async def delete_category_item(category_id: str):
+  category_object_id = ObjectId(category_id)
+  response = await delete_category({"_id": category_object_id}) 
+  
+  if response.deleted_count == 1:
+    return "Successfully delete category item"
+  raise HTTPException(404, "There is no category with that id")
