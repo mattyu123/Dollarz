@@ -17,7 +17,7 @@ export default function() {
       })
     }, [])
   
-  //Function that handles 
+  //Function that handles deleting a category
   const handleDeleteCategory = (categoryID) => {
     axios.delete(`http://localhost:8000/categories/${categoryID}`)
       .then(res => {
