@@ -12,6 +12,7 @@ docker-compose up --build
 
 docker-compose down -v
 #this will remove the containers and attached volumes after hitting ctrl-c in the terminal
+#For mongodb the mongodb_data volume will be deleted with the -v option
 
 # References
 
