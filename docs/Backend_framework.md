@@ -10,7 +10,19 @@ TODO:
 - GraphQL api for charts
 - OAuth between the frontend and backend
 
-## Libraries of the Backend:
+### API
+
+Authorization:
+/auth - (REST) , get/post
+
+data input:
+/category - (REST) , GET(required for expense) / POST
+/expense - (REST) , POST
+
+pull data out (assuming authorization):
+/expensesql - (graphql) - GET
+
+## Libraries implmenting Backend:
 
 **API etc**
 FastApi

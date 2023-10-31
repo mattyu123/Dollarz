@@ -3,7 +3,12 @@
 - Runs on port 3000 (localhost:3000)
 - provides an interface to add/remove expenses, categories and view charts
 
+### Parts of frontend:
 
+- authorization + session
+- expenses input + category input
+- overview that displays chart dashboard
+- sheet of expenses
 
 
 ## Frontend Framework
