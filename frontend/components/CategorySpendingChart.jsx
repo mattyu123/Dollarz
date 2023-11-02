@@ -1,24 +1,48 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+function getTotalSpendingPerCategory (expenseArr) {
+  const categoryMap = {};
+
+  for (let i = 0; i < expenseArr.length; i++) {
+    const item = expenseArr[i];
+    const { category, value } = item;
+    if (category in categoryMap) {
+      categoryMap[category] += value;
+    } else {
+      categoryMap[category] = value;
+    }
+  }
+
+  const result = []
+
+  for (const category in categoryMap) {
+    result.push({ category, value: categoryMap[category] });
+  }
+
+  return result
+}
 
 
 export default function CategorySpendingChart({ data, selectMonth }) {  
-
   if (!data) {
     return <p>Chart loading</p>
   }
 
+  //Filter the data down to only the current month's data
   const currentMonthData = data
     .filter(expense => expense.date.startsWith(selectMonth))
 
-  console.log(currentMonthData)
+  const totalSpendingPerCategory = getTotalSpendingPerCategory(currentMonthData)
+
+  console.log("total spending before combining", currentMonthData)
+  console.log("total final here", totalSpendingPerCategory)
 
   return (
       <BarChart
-        width={500}
+        width={750}
         height={300}
-        data={currentMonthData}
+        data={totalSpendingPerCategory}
         margin={{
           top: 5,
           right: 30,
@@ -27,7 +51,7 @@ export default function CategorySpendingChart({ data, selectMonth }) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date"/>
+        <XAxis dataKey="category"/>
         <YAxis/>
         <Tooltip />
         <Legend />
