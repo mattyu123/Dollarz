@@ -1,6 +1,6 @@
 # README
 
-This project contains boilerplate and the dependencies to run the finance app (codename to be determined).
+This project contains boilerplate and the dependencies to run the Dollarz app (codename to be determined).
 
 ## Quick setup
 
