@@ -57,7 +57,6 @@ export default function TotalExpenses({data, selectMonth}) {
   return (
     <div>
       <p>Total Spending In {month}: ${calculateTotalExpense()}</p>
-      {/* <button onClick={calculateTotalExpense}>Calculate Total Expense</button> */}
     </div>
   )
 }

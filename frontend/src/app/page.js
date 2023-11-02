@@ -6,14 +6,16 @@ import TotalExpenses from "../../components/TotalExpenses";
 import { useState, useEffect } from "react";
 
 export default function Page() {
-  const [selectMonth, setSelectMonth] = useState("2023-10")
+  //Get the current month and live refresh the starting month data
+  const currentDate = new Date().toISOString().slice(0,7)
+  
+  const [selectMonth, setSelectMonth] = useState(currentDate)
   const [data, setData] = useState()
   
   //Get the data from the rest API expense endpoint
   useEffect(() => {
     axios.get("http://localhost:8000/expenses")
       .then(res => {
-        console.log(res.data)
         setData(res.data) //set the data expenses to this data variable
       })
       .catch(error => {
@@ -24,7 +26,8 @@ export default function Page() {
   return (
     <>
       <NavBar />
-      <h1>This is home page</h1>
+      <h1>Total Spending</h1>
+      <p>Select a month to see how much you spent in that month</p>
       <select 
         value={selectMonth}
         onChange={(e) => setSelectMonth(e.target.value)}>
