@@ -4,6 +4,7 @@ import NavBar from "../../components/NavBar";
 import axios from "axios";
 import TotalExpenses from "../../components/TotalExpenses";
 import { useState, useEffect } from "react";
+import CategorySpendingChart from "../../components/CategorySpendingChart";
 
 export default function Page() {
   //Get the current month and live refresh the starting month data
@@ -45,6 +46,7 @@ export default function Page() {
           <option value="2023-01">January 2023</option>
       </select>
       <TotalExpenses data={data} selectMonth={selectMonth}/>
+      <CategorySpendingChart data={data} selectMonth={selectMonth}/>
     </>
   )
 }
