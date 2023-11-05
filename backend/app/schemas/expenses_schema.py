@@ -1,9 +1,15 @@
 # Schemas for the /expenses route
-from pydantic import BaseModel
-from datetime import date
+from pydantic import BaseModel, Field, validator
+from datetime import datetime
+from typing import Optional
 
 class ExpenseCreate(BaseModel):
-    date: date
+    id: Optional[str] = Field(None, alias="_id")
+    date: datetime
     name: str
-    amount: float
+    value: float
     category: str
+
+    @validator('id', pre=True, always=True)
+    def set_id(cls, v):
+        return str(v)

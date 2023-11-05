@@ -22,30 +22,27 @@ export default function AddExpense() {
 
   //Function to handle the submission of everything in the field
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+  e.preventDefault(); // This should be uncommented to prevent default form submission
 
-    // Create an object to send to the backend
-    const expenseData = {
-      date,
-      name,
-      value,
-      category
-    };
-
-    //Send the data to the backend
-    axios.post("http://localhost:8000/expenses", JSON.stringify(expenseData), {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    )
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+  const expenseData = {
+    date, // Assuming this is a string in "YYYY-MM-DD" format
+    name,
+    value: parseFloat(value), // Make sure this is a float since your backend expects a float
+    category
   };
+
+  axios.post("http://localhost:8000/expenses", expenseData, { // Do not stringify
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+};
 
   return (
     <div>

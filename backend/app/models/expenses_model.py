@@ -1,5 +1,6 @@
 # Database manipulation for /expenses
 from app.db.connection import database
+from datetime import datetime
 
 expense_collection = database.get_collection("expenses")
 
@@ -15,13 +16,14 @@ async def delete_expense(expense_id):
 
 #Fetch all of the expense items in the expenses collection and return it as an array
 async def fetch_all_expenses():
-  all_expenses = []
-  expenses_pulled_from_mongo = expense_collection.find({})
+    all_expenses = []
+    expenses_pulled_from_mongo = expense_collection.find({})
   
-  async for expense in expenses_pulled_from_mongo:
-    expense["_id"] = str(expense["_id"]) 
-    all_expenses.append(expense)
+    async for expense in expenses_pulled_from_mongo:
+        expense["_id"] = str(expense["_id"])
+        all_expenses.append(expense)
   
-  sorted_expenses = sorted(all_expenses, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%d"), reverse=True)
+    # assumes datetime object
+    sorted_expenses = sorted(all_expenses, key=lambda x: x["date"], reverse=True)
 
-  return sorted_expenses
+    return sorted_expenses

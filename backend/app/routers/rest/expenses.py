@@ -1,25 +1,49 @@
 # /expenses route
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import JSONResponse
 from app.schemas.expenses_schema import *
 from app.models.expenses_model import *
 from typing import List
 from bson import ObjectId
+from datetime import datetime
+
+#logging
+import logging
+
+logging.basicConfig(level=logging.INFO)
+_logger = logging.getLogger("uvicorn")
+
+
 
 router = APIRouter()
 
+# allow users to create an expense
 @router.post("/expenses", response_model=ExpenseCreate)
-async def add_expense(expense: ExpenseCreate):
-    return await create_expense(expense.dict())
+async def add_expense(expense_data: ExpenseCreate):
+    try:
+        # removing id as it will be set by Mongodb
+        expense_dict = expense_data.dict(exclude={"id"})
+        response = await create_expense(expense_dict)
+        inserted_id = response.inserted_id  
+        expense_data.id = str(inserted_id)  
+        return expense_data  
+    except Exception as ex:
+        raise HTTPException(status_code=500, detail=f"line 31: Internal Server Error: {ex}")
 
-@router.get("/expenses")
+# list all expenses
+@router.get("/expenses", response_model=List[ExpenseCreate])
 async def list_expenses():
-    return await fetch_all_expenses()
+    try:
+        expenses = await fetch_all_expenses()  
+        return expenses
+    except Exception as ex:
+        raise HTTPException(status_code=500, detail=f"line 42: Internal Server Error: {ex}")
 
+# delete an expense entry
 @router.delete("/expenses/{expense_id}")
 async def delete_expense_item(expense_id: str):
     if not ObjectId.is_valid(expense_id):
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid ObjectId format")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="line 48: Invalid ObjectId format")
     
     result = await delete_expense({'_id': ObjectId(expense_id)})
     if result.deleted_count:

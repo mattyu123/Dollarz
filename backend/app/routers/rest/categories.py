@@ -17,7 +17,8 @@ async def read_categories():
 async def add_category(category: CategoryCreate):
     category_data = category.dict()
     new_category = await create_category(category_data)
-    return new_category
+    created_category = await fetch_category(new_category.inserted_id)
+    return created_category
 
 @router.delete("/categories/{category_id}")
 async def delete_category_item(category_id: str):

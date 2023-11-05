@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from datetime import datetime 
 
 # REST ROUTES
 from app.routers.rest.expenses import router as expenses_router

@@ -13,6 +13,15 @@ async def delete_category(category_id):
    result = await category_collection.delete_one(category_id)
    return result
 
+# Returns category after a given id
+async def fetch_category(category_id):
+    category = await category_collection.find_one({"_id": category_id})
+    if category:
+        category["_id"] = str(category["_id"])
+        return category
+    else:
+        raise HTTPException(status_code=404, detail="Category not found")
+
 # Insert a category to the database
 async def fetch_all_categories():
   all_categories = []
