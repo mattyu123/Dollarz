@@ -22,6 +22,20 @@ data input:
 pull data out (assuming authorization):
 /expensesql - (graphql) - GET
 
+## Project structure:
+
+in /app
+
+/core - configuration and security settings (if requred )
+/db - database setup and configuration
+/models - database models
+/schemas - pydantic schemas
+/services - buisness logic for routers
+/routers - api endpoints
+/routers/rest - REST endpoints
+/routers/graphql - graphql endpoints
+
+
 ## Libraries implmenting Backend:
 
 **API etc**

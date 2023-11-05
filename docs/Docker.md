@@ -18,3 +18,6 @@ docker-compose down -v
 
 On how Docker builds its containers:
 https://docs.docker.com/build/guide/
+
+How to cleanup docker containers and other data
+https://stackoverflow.com/questions/45798076/how-to-clean-up-docker
