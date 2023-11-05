@@ -7,14 +7,6 @@ from typing import List
 from bson import ObjectId
 from datetime import datetime
 
-#logging
-import logging
-
-logging.basicConfig(level=logging.INFO)
-_logger = logging.getLogger("uvicorn")
-
-
-
 router = APIRouter()
 
 # allow users to create an expense
