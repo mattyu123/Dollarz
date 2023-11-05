@@ -5,7 +5,6 @@ export default function AddCategory() {
   const [name, setName] = useState("");
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
 
     const categoryData = {
       name
@@ -39,6 +38,5 @@ export default function AddCategory() {
           <button type="submit">Add Category</button>
         </form>
       </div>
-    )
-
-}
+    );
+  }

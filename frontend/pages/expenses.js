@@ -16,11 +16,23 @@ export default function Expenses(){
         console.error("Axios Error:", error)
       })
     }, [])
-  
+
+  //function handles deleting expenses
+  const handleDeleteExpense = (expenseID) => {
+    axios.delete(`http://localhost:8000/expenses/${expenseID}`)
+      .then(res => {
+        console.log("res",res)
+        setExpensesList(expensesList.filter((expense) => expense._id !== expenseID))
+      })
+      .catch(error => {
+        console.error("Axios error in expenses.js", error)
+      })
+  };
+
   return (
     <>
       <NavBar />
-      <ExpenseTable data={expensesList}/>
+      <ExpenseTable data={expensesList} onDeleteExpense={handleDeleteExpense}/>
       <AddExpense />
     </>
   )

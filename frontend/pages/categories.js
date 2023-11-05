@@ -26,7 +26,7 @@ export default function() {
       .catch(error => {
         console.error("Axios error in categories.js", error)
       })
-  }
+    }
   
   return (
     <>

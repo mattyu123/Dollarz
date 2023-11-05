@@ -35,12 +35,9 @@ export default function CategorySpendingChart({ data, selectMonth }) {
 
   const totalSpendingPerCategory = getTotalSpendingPerCategory(currentMonthData)
 
-  console.log("total spending before combining", currentMonthData)
-  console.log("total final here", totalSpendingPerCategory)
-
   return (
       <BarChart
-        width={750}
+        width={800}
         height={300}
         data={totalSpendingPerCategory}
         margin={{

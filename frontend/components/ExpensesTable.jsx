@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function ExpenseTable({data}) {
+export default function ExpenseTable({data, onDeleteExpense}) {
+  const handleDelete = (expenseId) => {
+    console.log("expense id", expenseId)
+    onDeleteExpense(expenseId)
+  }
+
   return (
     <table>
       <thead>
@@ -18,6 +23,9 @@ export default function ExpenseTable({data}) {
               <td>{item.name}</td>
               <td>${item.value}</td>
               <td>{item.category}</td>
+              <td>
+                <button onClick={() => handleDelete(item._id)}>Delete</button>
+              </td>
             </tr>
           ))}
       </tbody>
