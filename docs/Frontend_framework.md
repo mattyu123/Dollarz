@@ -3,6 +3,11 @@
 - Runs on port 3000 (localhost:3000)
 - provides an interface to add/remove expenses, categories and view charts
 
+### UI
+
+https://github.com/rewindui/rewindui
+https://github.com/phosphor-icons/react
+
 ### Parts of frontend:
 
 - authorization + session

@@ -1,5 +1,5 @@
+import NavSideBar from '../../components/NavSideBar'
 import '../../public/globalStyles.css'
-import { Button } from '@rewind-ui/core';
 
 export default function Layout({ children }) {
   return (
@@ -8,8 +8,19 @@ export default function Layout({ children }) {
         <title>DollarZ</title>
       </head>
       <body>
-        <Button>Click Me</Button>
-        {children}
+        <div className="relative flex flex-row w-full h-full min-h-[35rem]">
+          <NavSideBar/>
+        
+        
+
+        <div className="w-full h-full p-8">
+          {children}
+        </div>
+
+        <div className="flex sticky bottom-0 items-center bg-white w-full min-h-[4rem] px-8">
+          <span>Footer</span>
+        </div>
+        </div>
       </body>
     </html>
     )
