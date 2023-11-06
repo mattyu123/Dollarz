@@ -19,7 +19,7 @@ export default function NavSideBar() {
       <Sidebar.Head>
         <Sidebar.Head.Logo>
         </Sidebar.Head.Logo>
-        <Sidebar.Head.Title>Rewind-UI</Sidebar.Head.Title>
+        <Sidebar.Head.Title>DollarZ</Sidebar.Head.Title>
         <Sidebar.Head.Toggle />
       </Sidebar.Head>
 
