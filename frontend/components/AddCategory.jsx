@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import axios from "axios";
 
+import { Button } from '@rewind-ui/core';
+
 export default function AddCategory() {
   const [name, setName] = useState("");
 
@@ -35,7 +37,7 @@ export default function AddCategory() {
             value={name}
             onChange={(e)=> setName(e.target.value)}
           />
-          <button type="submit">Add Category</button>
+          <Button type="submit">Add Category</Button>
         </form>
       </div>
     );

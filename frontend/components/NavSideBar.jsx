@@ -77,7 +77,6 @@ export default function NavSideBar() {
             } }
             className="md:hidden z-40" />
         )} /><header className="flex flex-row sticky top-0 px-8 items-center bg-white border-b border-b-gray-100 w-full shadow-sm min-h-[4rem]">
-        <span>Navbar</span>
         <Button
           onClick={() => {
             sidebar.toggleMobile();

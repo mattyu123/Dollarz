@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from '@rewind-ui/core';
 
 export default function CategoryTable({data, onDeleteCategory}) {
   const handleDelete = (categoryId) => {
@@ -17,7 +18,7 @@ export default function CategoryTable({data, onDeleteCategory}) {
           <tr key={index}>
             <td>{item.name}</td>
             <td>
-              <button onClick={() => handleDelete(item._id)}>Delete</button>
+              <Button onClick={() => handleDelete(item._id)}>Delete</Button>
             </td>
           </tr>
         ))}

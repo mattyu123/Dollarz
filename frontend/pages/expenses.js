@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import NavBar from "../components/NavBar";
+
 import ExpenseTable from "../components/ExpensesTable";
 import AddExpense from "../components/AddExpense";
+
+import NavSideBar from "../components/NavBar";
+import '../public/globalStyles.css'
 
 export default function Expenses(){
   const [expensesList, setExpensesList] = useState([])
@@ -31,9 +34,17 @@ export default function Expenses(){
 
   return (
     <>
-      <NavBar />
-      <ExpenseTable data={expensesList} onDeleteExpense={handleDeleteExpense}/>
-      <AddExpense />
+    <div className="relative flex flex-row w-full h-full min-h-[35rem]">
+          <NavSideBar/>
+        <div className="w-full h-full p-8">
+          <ExpenseTable data={expensesList} onDeleteExpense={handleDeleteExpense}/>
+          <AddExpense />
+        </div>
+
+        <div className="flex sticky bottom-0 items-center bg-white w-full min-h-[4rem] px-8">
+          <span>Footer</span>
+        </div>
+        </div>
     </>
   )
 }

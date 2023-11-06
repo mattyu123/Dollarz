@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Button } from '@rewind-ui/core';
+
 export default function ExpenseTable({data, onDeleteExpense}) {
   const handleDelete = (expenseId) => {
     console.log("expense id", expenseId)
@@ -24,7 +26,7 @@ export default function ExpenseTable({data, onDeleteExpense}) {
               <td>${item.value}</td>
               <td>{item.category}</td>
               <td>
-                <button onClick={() => handleDelete(item._id)}>Delete</button>
+                <Button onClick={() => handleDelete(item._id)}>Delete</Button>
               </td>
             </tr>
           ))}

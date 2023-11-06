@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { Button } from '@rewind-ui/core';
+
 export default function AddExpense() {
   const [date, setDate] = useState("");
   const [name, setName] = useState("");
@@ -75,7 +77,7 @@ export default function AddExpense() {
           ))}
         </select>
 
-        <button type="submit">Add Expense</button>
+        <Button type="submit">Add Expense</Button>
       </form>
       <p>
         
