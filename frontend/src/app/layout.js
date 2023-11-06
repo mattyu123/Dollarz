@@ -1,8 +1,10 @@
+import '../../public/globalStyles.css'
+
 export default function Layout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>Next.js</title>
+        <title>DollarZ</title>
       </head>
       <body>
         {children}
