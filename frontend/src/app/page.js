@@ -17,7 +17,7 @@ export default function Page() {
   useEffect(() => {
     axios.get("http://localhost:8000/expenses")
       .then(res => {
-        setData(res.data) //set the data expenses to this data variable
+        setData(res.data) 
       })
       .catch(error => {
         console.error("Axios Error:", error)
