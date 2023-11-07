@@ -1,6 +1,5 @@
 "use client"
 
-import NavBar from "../../components/NavBar";
 import axios from "axios";
 import TotalExpenses from "../../components/TotalExpenses";
 import { useState, useEffect } from "react";
@@ -26,7 +25,6 @@ export default function Page() {
   
   return (
     <>
-      <NavBar />
       <h1>Total Spending</h1>
       <p>Select a month to see how much you spent in that month</p>
       <select 

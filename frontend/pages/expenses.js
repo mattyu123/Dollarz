@@ -4,7 +4,7 @@ import axios from "axios";
 import ExpenseTable from "../components/ExpensesTable";
 import AddExpense from "../components/AddExpense";
 
-import NavSideBar from "../components/NavBar";
+import NavSideBar from "../components/NavSideBar";
 import '../public/globalStyles.css'
 
 export default function Expenses(){
