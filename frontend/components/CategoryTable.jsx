@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from '@rewind-ui/core';
+import { Button, Table } from '@rewind-ui/core';
 
 export default function CategoryTable({data, onDeleteCategory}) {
   const handleDelete = (categoryId) => {
@@ -7,22 +7,22 @@ export default function CategoryTable({data, onDeleteCategory}) {
   }
   
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Category Name</th>
-        </tr>
-      </thead>
-      <tbody>
+    <Table headerColor="dark">
+      <Table.Thead>
+        <Table.Tr>
+          <Table.Th>Category Name</Table.Th>
+        </Table.Tr>
+      </Table.Thead>
+      <Table.Tbody>
         {data.map((item, index) => (
-          <tr key={index}>
-            <td>{item.name}</td>
-            <td>
+          <Table.Tr key={index}>
+            <Table.Td>{item.name}</Table.Td>
+            <Table.Td>
               <Button onClick={() => handleDelete(item._id)}>Delete</Button>
-            </td>
-          </tr>
+            </Table.Td>
+          </Table.Tr>
         ))}
-      </tbody>
-    </table>
+      </Table.Tbody>
+    </Table>
   )
 }
