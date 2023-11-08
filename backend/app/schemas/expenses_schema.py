@@ -12,8 +12,15 @@ class ExpenseCreate(BaseModel):
 
     @validator('id', pre=True, always=True)
     def set_id(cls, v):
+        if v is None or v == "None":
+            return None
         return str(v)
-    @validateor('date', pre=True)
+        
+    @validator('date', pre=True)
+    def validate_date(cls, value):
         if not isinstance(value, datetime):
-            return datetime.strptime(value, "%Y-%m-%d")
+            try:
+                return datetime.strptime(value, "%Y-%m-%d").date()
+            except ValueError as e:
+                raise ValueError(f"Could not parse date: {value}")
         return value
