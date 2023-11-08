@@ -13,11 +13,37 @@
   align-items: center
 }
 
-.total-spending {
-  font-size: 50px;
+.heading {
+  font-size: 30px;
 }
 
 .home-page {
   display: flex;
   justify-content: center;
+}
+
+/* Add styling to the Expenses table*/
+.add-expense {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border: solid black 1px;
+  padding: 10px;
+}
+
+.expense-inputs {
+   margin: 10px;
+   border: solid black 1px;
+   padding: 10px;
+}
+
+.expense-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 100px;
+}
+
+.expense-container {
+  margin-left: 100px;
 }

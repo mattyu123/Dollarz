@@ -49,28 +49,31 @@ export default function AddExpense() {
 };
 
   return (
-    <div>
-      <h3>Add Expenses here</h3>
-      <form onSubmit={handleSubmit}>
+    <div className="expense-container">
+      <strong><h3 className="heading">Add Expenses here: </h3></strong>
+      <form className="add-expense" onSubmit={handleSubmit}>
         <input
           type="date"
           placeholder="Date"
           value={date}
-          onChange={(e) => setDate(e.target.value)} />
+          onChange={(e) => setDate(e.target.value)} 
+          className="expense-inputs"/>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Expense Name"
           value={name}
-          onChange={(e) => setName(e.target.value)} />
+          onChange={(e) => setName(e.target.value)} 
+          className="expense-inputs"/>
         <input
           type="number"
           placeholder="Amount"
           value={value}
-          onChange={(e) => setValue(e.target.value)} />
+          onChange={(e) => setValue(e.target.value)} 
+          className="expense-inputs"/>
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-        >
+          className="expense-inputs">
           <option value="" disabled>Select a category</option>
           {categories.map((category) => (
             <option key={category._id} value={category.name}>
@@ -78,7 +81,6 @@ export default function AddExpense() {
             </option>
           ))}
         </select>
-
         <Button type="submit">Add Expense</Button>
       </form>
       <p>

@@ -12,10 +12,11 @@ export default function ExpenseTable({data, onDeleteExpense}) {
     <Table headerColor="dark">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th align="left">Date</Table.Th>
-          <Table.Th align="left">Name</Table.Th>
+          <Table.Th align="center">Date</Table.Th>
+          <Table.Th align="center">Name</Table.Th>
           <Table.Th align="center">Value</Table.Th>
-          <Table.Th align="left">Category</Table.Th>
+          <Table.Th align="center">Category</Table.Th>
+          <Table.Th align="center">Delete</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>
