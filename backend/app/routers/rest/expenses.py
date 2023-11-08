@@ -6,6 +6,7 @@ from app.models.expenses_model import *
 from typing import List
 from bson import ObjectId
 from datetime import datetime
+import logging
 
 router = APIRouter()
 

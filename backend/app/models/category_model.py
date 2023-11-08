@@ -1,5 +1,6 @@
 # Database manipulation for /categories
 from app.db.connection import database
+from fastapi import HTTPException
 
 category_collection = database.get_collection("categories")
 

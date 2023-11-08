@@ -33,6 +33,9 @@ export default function AddExpense() {
     category
   };
 
+  console.log("expense data here", expenseData)
+  console.log("expense data here", typeof expenseData.date)
+
   axios.post("http://localhost:8000/expenses", expenseData, { // Do not stringify
     headers: {
       'Content-Type': 'application/json'

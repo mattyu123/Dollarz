@@ -41,7 +41,6 @@ export default function() {
         </div>
 
         <div className="flex sticky bottom-0 items-center bg-white w-full min-h-[4rem] px-8">
-          <span>Footer</span>
         </div>
         </div>
     </>

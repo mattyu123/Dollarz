@@ -25,7 +25,7 @@ export default function Page() {
   
   return (
     <>
-      <h1>Total Spending</h1>
+      <strong><h1 className="header">Total Spending</h1></strong>
       <p>Select a month to see how much you spent in that month</p>
       <select 
         value={selectMonth}
