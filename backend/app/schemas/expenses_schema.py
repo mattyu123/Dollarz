@@ -13,3 +13,7 @@ class ExpenseCreate(BaseModel):
     @validator('id', pre=True, always=True)
     def set_id(cls, v):
         return str(v)
+    @validateor('date', pre=True)
+        if not isinstance(value, datetime):
+            return datetime.strptime(value, "%Y-%m-%d")
+        return value
