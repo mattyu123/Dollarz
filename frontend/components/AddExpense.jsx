@@ -24,12 +24,11 @@ export default function AddExpense() {
 
   //Function to handle the submission of everything in the field
   const handleSubmit = async (e) => {
-  e.preventDefault(); // This should be uncommented to prevent default form submission
 
   const expenseData = {
     date, // Assuming this is a string in "YYYY-MM-DD" format
     name,
-    value: parseFloat(value), // Make sure this is a float since your backend expects a float
+    value: parseFloat(value),
     category
   };
 
