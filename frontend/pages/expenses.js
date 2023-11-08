@@ -24,7 +24,6 @@ export default function Expenses(){
   const handleDeleteExpense = (expenseID) => {
     axios.delete(`http://localhost:8000/expenses/${expenseID}`)
       .then(res => {
-        console.log("res",res)
         setExpensesList(expensesList.filter((expense) => expense._id !== expenseID))
       })
       .catch(error => {
