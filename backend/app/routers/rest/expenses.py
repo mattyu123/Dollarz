@@ -8,20 +8,30 @@ from bson import ObjectId
 from datetime import datetime
 import logging
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)  
+
 router = APIRouter()
 
 # allow users to create an expense
 @router.post("/expenses", response_model=ExpenseCreate)
 async def add_expense(expense_data: ExpenseCreate):
     try:
-        # removing id as it will be set by Mongodb
+        # Convert Pydantic model to dict and exclude 'id' field
         expense_dict = expense_data.dict(exclude={"id"})
+        logger.info(f"Adding new expense: {expense_dict}")
+
+        # Pass a dictionary
         response = await create_expense(expense_dict)
-        inserted_id = response.inserted_id  
-        expense_data.id = str(inserted_id)  
-        return expense_data  
+        inserted_id = response.inserted_id
+        expense_data.id = str(inserted_id)
+
+        return expense_data
     except Exception as ex:
-        raise HTTPException(status_code=500, detail=f"line 31: Internal Server Error: {ex}")
+        logger.error(f"An error occurred when adding an expense: {ex}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
 # list all expenses
 @router.get("/expenses", response_model=List[ExpenseCreate])
