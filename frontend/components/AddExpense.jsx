@@ -33,9 +33,6 @@ export default function AddExpense() {
     category
   };
 
-  console.log("expense data here", expenseData)
-  console.log("expense data here", typeof expenseData.date)
-
   axios.post("http://localhost:8000/expenses", expenseData, { // Do not stringify
     headers: {
       'Content-Type': 'application/json'
@@ -52,29 +49,29 @@ export default function AddExpense() {
   return (
     <div className="expense-container">
       <strong><h3 className="heading">Add Expenses here: </h3></strong>
-      <form className="add-expense" onSubmit={handleSubmit}>
+      <form className="add-item" onSubmit={handleSubmit}>
         <input
           type="date"
           placeholder="Date"
           value={date}
           onChange={(e) => setDate(e.target.value)} 
-          className="expense-inputs"/>
+          className="item-inputs"/>
         <input
           type="text"
           placeholder="Expense Name"
           value={name}
           onChange={(e) => setName(e.target.value)} 
-          className="expense-inputs"/>
+          className="item-inputs"/>
         <input
           type="number"
           placeholder="Amount"
           value={value}
           onChange={(e) => setValue(e.target.value)} 
-          className="expense-inputs"/>
+          className="item-inputs"/>
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="expense-inputs">
+          className="item-inputs">
           <option value="" disabled>Select a category</option>
           {categories.map((category) => (
             <option key={category._id} value={category.name}>

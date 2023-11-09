@@ -10,14 +10,15 @@ export default function CategoryTable({data, onDeleteCategory}) {
     <Table headerColor="dark">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th>Category Name</Table.Th>
+          <Table.Th align="center">Category Name</Table.Th>
+          <Table.Th align="center">Delete</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>
         {data.map((item, index) => (
           <Table.Tr key={index}>
-            <Table.Td>{item.name}</Table.Td>
-            <Table.Td>
+            <Table.Td align="center">{item.name}</Table.Td>
+            <Table.Td align="center">
               <Button onClick={() => handleDelete(item._id)}>Delete</Button>
             </Table.Td>
           </Table.Tr>

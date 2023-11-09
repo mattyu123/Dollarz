@@ -7,6 +7,7 @@ export default function ExpenseTable({data, onDeleteExpense}) {
     onDeleteExpense(expenseId)
   }
 
+  //Remove the time stamp so only the date gets shown on the UI
   const formatDate = (date) => {
     let final = ""
 
@@ -19,9 +20,6 @@ export default function ExpenseTable({data, onDeleteExpense}) {
     }
     return final
   }
-
-  // console.log("data here", data)
-  // console.log(typeof data[0].date)
 
   return (
     <Table headerColor="dark">
