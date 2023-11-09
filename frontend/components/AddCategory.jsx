@@ -26,10 +26,9 @@ export default function AddCategory() {
   }
   
     return (
-      <div>
+      <div className="expense-container">
         <strong><h3 className="heading">Add Categories Here:</h3></strong>
         <p>Your finances are in your control, add any category for your expenses as you wish! </p>
-        <p><strong>Note: Expenses not be deleted if you delete a category</strong></p>
         <form className="add-item" onSubmit={handleSubmit}>
           <input 
             type="text"
@@ -40,6 +39,7 @@ export default function AddCategory() {
           />
           <Button type="submit">Add Category</Button>
         </form>
+        <p><strong>Note:</strong> Expenses associated with a deleted category will not get deleted by default</p>
       </div>
     );
   }

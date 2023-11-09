@@ -8,9 +8,9 @@
 }
 
 .month-selector {
-  margin: 10px;
+  /* margin: 10px; */
   background-color: #D3D3D3;
-  align-items: center
+  align-items: center;
 }
 
 .heading {
@@ -19,7 +19,9 @@
 
 .home-page {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  margin-right: 100px;
 }
 
 /* Add styling to the Expenses table*/
@@ -45,5 +47,5 @@
 }
 
 .expense-container {
-  margin-left: 100px;
+  margin-left: 150px;
 }

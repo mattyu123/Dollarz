@@ -35,7 +35,7 @@ export default function() {
     <>
     <div className="relative flex flex-row w-full h-full min-h-[35rem]">
           <NavSideBar/>
-        <div className="w-full h-full p-8">
+        <div className="w-full h-full p-8 expense-display">
           <CategoryTable data={categories} onDeleteCategory={handleDeleteCategory}/>
           <AddCategory />
         </div>
