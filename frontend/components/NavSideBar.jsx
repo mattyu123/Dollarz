@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Sidebar, useSidebar, Overlay, Button } from '@rewind-ui/core';
-import { RocketLaunch } from "@phosphor-icons/react"; //needed if server side rendering see documentation for details
+import { RocketLaunch, Gavel, Gauge, BookOpenText } from "@phosphor-icons/react"; //needed if server side rendering see documentation for details
 
 export default function NavSideBar() {
   const [expanded, setExpanded] = useState(true);
@@ -19,18 +19,18 @@ export default function NavSideBar() {
       <Sidebar.Head>
         <Sidebar.Head.Logo>
         </Sidebar.Head.Logo>
-        <Sidebar.Head.Title>DollarZ</Sidebar.Head.Title>
+        <Sidebar.Head.Title icon={<RocketLaunch />}>DollarZ</Sidebar.Head.Title>
         <Sidebar.Head.Toggle />
       </Sidebar.Head>
 
       <Sidebar.Nav>
         <Sidebar.Nav.Section>
-          <Sidebar.Nav.Section.Item icon={<RocketLaunch />} label="Dashboard" href="/" active />
+          <Sidebar.Nav.Section.Item icon={<Gauge />} label="Dashboard" href="/" active />
         </Sidebar.Nav.Section>
 
         <Sidebar.Nav.Section>
           <Sidebar.Nav.Section.Title>Expenses</Sidebar.Nav.Section.Title>
-          <Sidebar.Nav.Section.Item label="Manage" as="button">
+          <Sidebar.Nav.Section.Item icon={<RocketLaunch />} label="Manage" as="button">
             <Sidebar.Nav.Section isChild>
               <Sidebar.Nav.Section.Item
                 icon={<span className="w-1 h-1 rounded bg-transparent" />}
@@ -46,8 +46,8 @@ export default function NavSideBar() {
 
         <Sidebar.Nav.Section>
           <Sidebar.Nav.Section.Title>Support</Sidebar.Nav.Section.Title>
-          <Sidebar.Nav.Section.Item label="Documentation" href="#" />
-          <Sidebar.Nav.Section.Item label="Legal" href="#" />
+          <Sidebar.Nav.Section.Item icon={<BookOpenText />} label="Documentation" href="#" />
+          <Sidebar.Nav.Section.Item icon={<Gavel />} label="Legal" href="#" />
           <Sidebar.Separator />
         </Sidebar.Nav.Section>
       </Sidebar.Nav>
