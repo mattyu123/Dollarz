@@ -56,7 +56,8 @@ export default function TotalExpenses({data, selectMonth}) {
 
   return (
     <div>
-      <p>Total Spending In {month}: ${calculateTotalExpense()}</p>
+      <p>Total Spending In <strong>{month}:</strong></p>
+      <div className="heading">${calculateTotalExpense()}</div>
     </div>
   )
 }

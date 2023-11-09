@@ -24,12 +24,12 @@ export default function AddExpense() {
 
   //Function to handle the submission of everything in the field
   const handleSubmit = async (e) => {
-  e.preventDefault(); // This should be uncommented to prevent default form submission
+  // e.preventDefault(); // This should be uncommented to prevent default form submission
 
   const expenseData = {
     date, // Assuming this is a string in "YYYY-MM-DD" format
     name,
-    value: parseFloat(value), // Make sure this is a float since your backend expects a float
+    value: parseFloat(value),
     category
   };
 
@@ -47,28 +47,31 @@ export default function AddExpense() {
 };
 
   return (
-    <div>
-      <h3>Add Expenses here</h3>
-      <form onSubmit={handleSubmit}>
+    <div className="expense-container">
+      <strong><h3 className="heading">Add Expenses here: </h3></strong>
+      <form className="add-item" onSubmit={handleSubmit}>
         <input
           type="date"
           placeholder="Date"
           value={date}
-          onChange={(e) => setDate(e.target.value)} />
+          onChange={(e) => setDate(e.target.value)} 
+          className="item-inputs"/>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Expense Name"
           value={name}
-          onChange={(e) => setName(e.target.value)} />
+          onChange={(e) => setName(e.target.value)} 
+          className="item-inputs"/>
         <input
           type="number"
           placeholder="Amount"
           value={value}
-          onChange={(e) => setValue(e.target.value)} />
+          onChange={(e) => setValue(e.target.value)} 
+          className="item-inputs"/>
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-        >
+          className="item-inputs">
           <option value="" disabled>Select a category</option>
           {categories.map((category) => (
             <option key={category._id} value={category.name}>
@@ -76,7 +79,6 @@ export default function AddExpense() {
             </option>
           ))}
         </select>
-
         <Button type="submit">Add Expense</Button>
       </form>
       <p>

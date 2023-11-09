@@ -4,24 +4,38 @@ import { Button, Table } from '@rewind-ui/core';
 
 export default function ExpenseTable({data, onDeleteExpense}) {
   const handleDelete = (expenseId) => {
-    console.log("expense id", expenseId)
     onDeleteExpense(expenseId)
+  }
+
+  //Remove the time stamp so only the date gets shown on the UI
+  const formatDate = (date) => {
+    let final = ""
+
+    for (const item of date) {
+      if (item === "T") {
+        break
+      } else {
+        final += item
+      }
+    }
+    return final
   }
 
   return (
     <Table headerColor="dark">
       <Table.Thead>
         <Table.Tr>
-          <Table.Th align="left">Date</Table.Th>
-          <Table.Th align="left">Name</Table.Th>
+          <Table.Th align="center">Date</Table.Th>
+          <Table.Th align="center">Name</Table.Th>
           <Table.Th align="center">Value</Table.Th>
-          <Table.Th align="left">Category</Table.Th>
+          <Table.Th align="center">Category</Table.Th>
+          <Table.Th align="center">Delete</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>
         {data.map((item, index) => (
             <Table.Tr key={index}>
-              <Table.Td align="center">{item.date}</Table.Td>
+              <Table.Td align="center">{formatDate(item.date)}</Table.Td>
               <Table.Td align="center">{item.name}</Table.Td>
               <Table.Td align="center">${item.value}</Table.Td>
               <Table.Td align="center">{item.category}</Table.Td>

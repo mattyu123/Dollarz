@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Classes below are for the main dashboard page*/
+.header {
+  font-size: 50px;
+}
+
+.month-selector {
+  /* margin: 10px; */
+  background-color: #D3D3D3;
+  align-items: center;
+}
+
+.heading {
+  font-size: 30px;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-right: 100px;
+}
+
+/* Add styling to the Expenses table*/
+.add-item {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border: solid black 1px;
+  padding: 10px;
+}
+
+.item-inputs {
+   margin: 10px;
+   border: solid black 1px;
+   padding: 10px;
+}
+
+.expense-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 100px;
+}
+
+.expense-container {
+  margin-left: 150px;
+}

@@ -26,19 +26,20 @@ export default function AddCategory() {
   }
   
     return (
-      <div>
-        <h1>Add Additional Category Here</h1>
+      <div className="expense-container">
+        <strong><h3 className="heading">Add Categories Here:</h3></strong>
         <p>Your finances are in your control, add any category for your expenses as you wish! </p>
-        <p><strong>Note: Expenses not be deleted if you delete a category</strong></p>
-        <form onSubmit={handleSubmit}>
+        <form className="add-item" onSubmit={handleSubmit}>
           <input 
             type="text"
             placeholder="Category Name"
             value={name}
             onChange={(e)=> setName(e.target.value)}
+            className="item-inputs"
           />
           <Button type="submit">Add Category</Button>
         </form>
+        <p><strong>Note:</strong> Expenses associated with a deleted category will not get deleted by default</p>
       </div>
     );
   }

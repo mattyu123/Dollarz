@@ -7,7 +7,11 @@ module.exports = {
     './node_modules/@rewind-ui/core/dist/theme/styles/*.js',
   ],
   theme: {
-    extend: {},
+    extend: {}
+  },
+  fontFamily: {
+    sans: ['Graphik', 'sans-serif'],
+    serif: ['Merriweather', 'serif'],
   },
   plugins: [
     require('@tailwindcss/typography'),

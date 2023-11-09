@@ -24,7 +24,6 @@ export default function Expenses(){
   const handleDeleteExpense = (expenseID) => {
     axios.delete(`http://localhost:8000/expenses/${expenseID}`)
       .then(res => {
-        console.log("res",res)
         setExpensesList(expensesList.filter((expense) => expense._id !== expenseID))
       })
       .catch(error => {
@@ -36,13 +35,11 @@ export default function Expenses(){
     <>
     <div className="relative flex flex-row w-full h-full min-h-[35rem]">
           <NavSideBar/>
-        <div className="w-full h-full p-8">
+        <div className="w-full h-full p-8 expense-display">
           <ExpenseTable data={expensesList} onDeleteExpense={handleDeleteExpense}/>
           <AddExpense />
         </div>
-
         <div className="flex sticky bottom-0 items-center bg-white w-full min-h-[4rem] px-8">
-          <span>Footer</span>
         </div>
         </div>
     </>

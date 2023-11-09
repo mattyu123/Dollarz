@@ -35,13 +35,12 @@ export default function() {
     <>
     <div className="relative flex flex-row w-full h-full min-h-[35rem]">
           <NavSideBar/>
-        <div className="w-full h-full p-8">
+        <div className="w-full h-full p-8 expense-display">
           <CategoryTable data={categories} onDeleteCategory={handleDeleteCategory}/>
           <AddCategory />
         </div>
 
         <div className="flex sticky bottom-0 items-center bg-white w-full min-h-[4rem] px-8">
-          <span>Footer</span>
         </div>
         </div>
     </>
